@@ -1,11 +1,12 @@
 # ISSUES.md
 
 ## 進行中のイシュー
-- [ ] [ISSUE-03] モデル構築・評価
+- [ ] [ISSUE-04] 分析結果の統合と最終報告
 
 ## 完了したイシュー
 - [x] [ISSUE-01] データ理解・探索的データ分析 (EDA)
 - [x] [ISSUE-02] 特徴量エンジニアリング & 前処理
+- [x] [ISSUE-03] モデル構築・評価
 
 ---
 
@@ -27,8 +28,15 @@
 - [x] ドメイン知識の定数化 (`constants.py`)
 - [x] 成果物の集約管理化 (`analysis/res_02_Refined_Dataset/`)
 
-### [ISSUE-03] モデル構築・評価
-- [ ] ベースラインモデル (RandomForest等) の作成
-- [ ] 特徴量重要度の確認
-- [ ] 予測精度評価 (RMSE等)
+### [ISSUE-03] モデル構築・評価 [CLOSED]
+- [x] ベースラインモデル (RandomForestRegressor) の作成
+- [x] 特徴量重要度による要因分析 (Feature Importance)
+- [x] 予測精度評価 (RMSE: 3549)
+- [x] 推論用特徴量順序の固定化 (`feature_names.joblib`)
+- [x] 成果物の集約管理化 (`analysis/res_03_Attendance_Prediction_Model/`)
+
+### [ISSUE-04] 分析結果の統合と最終報告
+- [ ] 各フェーズのレポート統合
+- [ ] 現場向け集客改善アクションの具体化
+- [ ] 最終納品資産の整理
 
