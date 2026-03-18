@@ -37,6 +37,6 @@
 - **次の一手:** [ISSUE-03] において、これらの特徴量を用いたベースラインモデルの構築と要因分析を実施する。
 
 ### 付録：再現性のための情報 (Appendix)
-- スクリプト: `scripts/preprocess.py`
-- テストスクリプト: `tests/test_preprocess.py`
-- 中間データ: `processed_data/merged_train.csv`
+- スクリプト: `analysis/02_Refined_Dataset/preprocess.py`
+- テストスクリプト: `analysis/02_Refined_Dataset/test_preprocess.py`
+- 中間データ: `analysis/02_Refined_Dataset/merged_train.csv`

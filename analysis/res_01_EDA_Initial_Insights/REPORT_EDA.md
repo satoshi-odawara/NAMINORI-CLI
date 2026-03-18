@@ -43,5 +43,5 @@
 - **次の一手:** [ISSUE-02] の残りの前処理（天候のカテゴリ化、人気チームフラグの作成等）に進む。
 
 ### 付録：再現性のための情報 (Appendix)
-- スクリプト: `scripts/preprocess.py`, `scripts/eda_visualize.py`
-- 中間データ: `processed_data/merged_train.csv`
+- スクリプト: `analysis/01_EDA_Initial_Insights/eda_basic.py`, `analysis/01_EDA_Initial_Insights/eda_visualize.py`
+- 中間データ: `analysis/02_Refined_Dataset/merged_train.csv`

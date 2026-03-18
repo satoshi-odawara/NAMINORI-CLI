@@ -10,8 +10,8 @@
 2. **現場での再現性・説明可能性**
 
 [ヒアリングシート (inputdata/request.md)](inputdata/request.md)に基づき、データ分析を行う。
-実装上の具体的なコーディングルールや技術仕様については、[実装規約 (docs/implementation_rules.md)](rules/implementation_rules.md) を必ず参照すること。
-レポートの作成ルールについては、[レポート作成規約 (docs/report_rules.md)](rules/report_rules.md) を必ず参照すること。
+実装上の具体的なコーディングルールや技術仕様については、[実装規約 (rules/implementation_rules.md)](rules/implementation_rules.md) を必ず参照すること。
+レポートの作成ルールについては、[レポート作成規約 (rules/report_rules.md)](rules/report_rules.md) を必ず参照すること。
 
 ---
 
@@ -21,10 +21,10 @@
 
 - **[Domain Specialist: 現場・ドメイン専門家]**: データ特性の情報を提供し、Lead DSへの気づきを提供する。また、Presenterのレポートの妥当性を評価する。
 - **[Lead DS]**: 分析戦略の立案。ドメイン知識に基づき、最適な統計手法を選択する。
-- **[Coder]**: implementation_rules.md を厳守し、Pythonによるデータ処理を実装する。再利用可能なスクリプトを `./scripts/` に保存する。
+- **[Coder]**: implementation_rules.md を厳守し、Pythonによるデータ処理を実装する。成果物は `./analysis/` 以下の適切な成果物フォルダに保存する。
 - **[QA]**: 検証担当。ドメインスペシャリストの見解とデータが矛盾していないか、数値が正確かを厳格にチェックする。
-- **[Presenter]**: report_rules.md を厳守し、構造化されたレポートを執筆する。現場担当者や経営層に伝わる、説得力のある Markdown レポートを執筆する。
-- **[Maneger]**: 最終承認者。成果物の構造、資産保存（scripts, processed_data）の実行を監督する。
+- **[Presenter]**: report_rules.md を厳守し、構造化されたレポートを執筆する。成果物フォルダの直下にレポートを配置し、分析結果を可視化・言語化する。
+- **[Maneger]**: 最終承認者。成果物の構造、資産保存の実行を監督する。
 
 ---
 
@@ -38,7 +38,7 @@
 ### 2.2 進捗管理（ISSUES & 開発計画）
 
 - 分析の進捗は `ISSUES.md` で管理する。
-- 全体像は `reports/analysis_plan.txt` （日本語）で管理し、各イシューの完了ごとに更新する。
+- 全体像は `analysis/analysis_plan.txt` （日本語）で管理し、各イシューの完了ごとに更新する。
 
 ### 2.3 Git/コミット規定
 
@@ -50,11 +50,11 @@
 
 イシューを完了（[CLOSED]化）しコミットする際は、以下の順序を**狂いなく**実行すること：
 
-1. **[Coder]**: コードの実装および `git add` によるステージング。
+1. **[Coder]**: コードの実装、**対応するテストコード (`./analysis/[Result_Folder]/`) の作成**、および `git add` によるステージング。
 2. **[QA]**: 全テストの実行 (`pytest`) および `IMPLEMENTATION_RULES.md` に基づく物理的妥当性の審査。
-3. **[Presenter]**: レポートの更新。
+3. **[Presenter]**: レポートの更新（成果物フォルダ内のレポートを最新化）。
 4. **[Lead DS/Domain Specialist]**: レポートの妥当性をレビューし、必要に応じて[Presenter]へ修正を命じる。
-5. **[Maneger]**: `ISSUES.md` を [CLOSED] に更新し、`analysis_plan.txt` の進捗を更新。
+5. **[Maneger]**: `ISSUES.md` を [CLOSED] に更新し、`analysis/analysis_plan.txt` に**意思決定の記録（ジャーナル）を追記**して進捗を更新。
 6. **[System]**: **`git commit` の実行。** コミットメッセージには [Architect] が承認した要約を使用する。
 
 ---
@@ -62,7 +62,7 @@
 ## 3. 再現性と資産管理の徹底
 
 - 分析対象データである`./inputdata/`の内容は変更しない
-- 分析コードは必ず `./scripts/` に保存すること。
+- 分析成果物（コード、データ、レポート、テスト）は必ず `./analysis/[Result_Folder]/` に集約して保存すること。
 - ドメインスペシャリストによる「解釈の根拠」をレポートに必ず含めること。
 - ヒアリングシートの情報が不足している場合、ドメインスペシャリストがユーザーに追加質問を投げること。
 

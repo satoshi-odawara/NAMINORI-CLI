@@ -1,15 +1,15 @@
 import pandas as pd
 import pytest
 import os
-from scripts.preprocess import preprocess_and_merge
+from analysis.res_02_Refined_Dataset.preprocess import preprocess_and_merge
 
 def test_preprocess_output_exists():
     # Ensure the script runs
     preprocess_and_merge()
-    assert os.path.exists('processed_data/merged_train.csv')
+    assert os.path.exists('analysis/res_02_Refined_Dataset/merged_train.csv')
 
 def test_preprocess_features():
-    df = pd.read_csv('processed_data/merged_train.csv')
+    df = pd.read_csv('analysis/res_02_Refined_Dataset/merged_train.csv')
     
     # Check if new columns exist
     assert 'weather_cat' in df.columns
@@ -26,7 +26,7 @@ def test_preprocess_features():
     assert set(df['is_derby'].unique()).issubset({0, 1})
 
 def test_no_missing_values():
-    df = pd.read_csv('processed_data/merged_train.csv')
+    df = pd.read_csv('analysis/res_02_Refined_Dataset/merged_train.csv')
     # Except 'referee' which we filled 'Unknown'
     # Actually, check if any null exists
     assert df.isnull().sum().sum() == 0
