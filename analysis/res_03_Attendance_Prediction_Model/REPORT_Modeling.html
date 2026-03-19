@@ -1,0 +1,87 @@
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>REPORT Modeling</title>
+        
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #2c3e50; padding-left: 15px; }
+        h3 { color: #34495e; margin-top: 25px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .so-what {
+            background-color: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="report_modelingmd-phase-3-modeling-interpretation">REPORT_Modeling.md (Phase 3: Modeling &amp; Interpretation)</h1>
+<h2 id="1-1-summary">1-1. エグゼクティブサマリー (Summary)</h2>
+<ul>
+<li><strong>背景:</strong> 特徴量エンジニアリングにより生成された変数が、実際の動員予測においてどの程度有効であり、何が支配的な要因であるかを特定する必要があった。</li>
+<li><strong>目的:</strong> Random Forestを用いた動員予測モデル（RMSE: 3549）を構築し、予測精度評価と特徴量重要度による要因分析を実施する。</li>
+<li><strong>結果:</strong> 動員を規定するのは「所属ディビジョン」と「スタジアムキャパ」の2大物理変数であり、これらだけで要因の8割以上を説明可能であることが判明した。</li>
+<li><strong>アクション:</strong> 現場の微細な集客施策よりも、J1昇格や大型スタジアム利用といった「構造的選択」を最優先の経営判断指標として据えよ。</li>
+</ul>
+<h2 id="1-2-analysis-findings">1-2. 分析の結果と考察 (Analysis &amp; Findings)</h2>
+<h3 id="1-2-1">1-2-1. 動員を決定する構造的要因（要因重要度）</h3>
+<p><strong>【算出プロセスの概要】</strong>
+本分析では機械学習アルゴリズム「Random Forest」を採用しています。図に示す「重要度（Importance）」は、モデルが数千回の予測シミュレーションを行う過程で、<strong>「各変数が予測の不確実性（誤差）をどれだけ減少させたか」</strong>を累積・正規化したものです。数値が高いほど、その変数の情報が欠落した際の予測精度の悪化が大きく、物理的に動員数を規定している「支配的な要因」であることを意味します。</p>
+<p><img alt="feature_importance" src="figures/feature_importance.png" /></p>
+<blockquote>
+<p><div class="so-what"><strong>So What?: 集客努力よりも「どのカテゴリで、どの規模の会場でやるか」という構造設計が動員の8割を決める。</strong>
+- - <strong>stage (Division):</strong> 寄与度 約45%。
+- - <strong>capa (Capacity):</strong> 寄与度 約38%。
+- - <strong>month (Season):</strong> 寄与度 約8%。</p>
+</blockquote>
+<h3 id="1-2-2-rmse-3549">1-2-2. モデルの精度と限界 (RMSE: 3549)</h3>
+<ul>
+<li><div class="so-what"><strong>So What?: 平均動員の3割程度の誤差を「運営側のバッファ」として織り込む必要がある。</strong></li>
+</ul>
+<h2 id="1-3-conclusion-recommendations">1-3. 結論と今後のアクション (Conclusion &amp; Recommendations)</h2>
+<ul>
+<li><strong>結論:</strong> 動員予測は「構造（stage, capa）」と「戦術（人気、月、天気）」に分けて考えるべき。</li>
+<li><strong>次の一手:</strong> 最終報告書において、定量的根拠に基づいた「運営アクションプラン」を提示する。</li>
+</ul>
+            <div class="footer">
+                &copy; 2026 NAMINORI Data Science Team. Generated from REPORT_Modeling.md.
+            </div>
+        </div>
+    </body>
+    </html>
+    

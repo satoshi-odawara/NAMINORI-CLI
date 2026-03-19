@@ -1,0 +1,82 @@
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>REVIEW LOG</title>
+        
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #2c3e50; padding-left: 15px; }
+        h3 { color: #34495e; margin-top: 25px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .so-what {
+            background-color: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="review_logmd">品質改善ジャーナル (REVIEW_LOG.md)</h1>
+<h2 id="0">0. 運用方針</h2>
+<p>本ドキュメントは、分析プロセスで発生したミスや改善点を記録し、チームの「知の資産」とするためのものである。</p>
+<hr />
+<h2 id="20260318">2026/03/18: ドメインスペシャリストの機能不全と「思い込み」による捏造</h2>
+<ul>
+<li><strong>事象</strong>: グラフが「月・火の動員が最大」を示しているにもかかわらず、レポートに「土曜が圧倒的」という虚偽の考察を記述した。</li>
+<li><strong>原因</strong>: チーム全体が「Jリーグ＝土曜がメイン」という強い先入観（バイアス）に支配され、[Domain Specialist] がデータの異常（物理的真実）を指摘する機能を喪失していた。</li>
+<li><strong>対策</strong>: [Domain Specialist] に「物理的妥当性チェックの拒否権」を付与。また、記述する形容詞は必ず図表の数値順位と一致させる「完全一致の原則」を導入。</li>
+<li><strong>革新</strong>: 業界の常識をあえて否定する「仮説破壊フロー」を初期工程に組み込む。</li>
+</ul>
+<h2 id="20260318_1">2026/03/18: 統計リテラシーの壁と不親切な可視化</h2>
+<ul>
+<li><strong>事象</strong>: 箱ひげ図の解読ガイドの欠如、およびX軸ラベルの未デコード（0-6のまま）により、現場での説明可能性を著しく損なった。</li>
+<li><strong>対策</strong>: <code>report_rules.md</code> に「人間可読なラベルの原則」と「図表解読ガイドの原則」を追加。</li>
+<li><strong>革新</strong>: 共通ツール（<code>visualizer.py</code>）により、層別表示（次元維持）や日本語化を強制適用する「By-Design」の品質担保を実装。</li>
+</ul>
+<h2 id="20260318_2">2026/03/18: 管理ドキュメントのアクセシビリティ不足</h2>
+<ul>
+<li><strong>事象</strong>: 分析ポータル（INDEX）からリンクされた管理ドキュメントがプレーンテキストであり、閲覧体験が分断されていた。</li>
+<li><strong>対策</strong>: 全ての管理資産（ジャーナル、規約、ログ）を HTML 化の対象とし、ポータルからの動線を整備。</li>
+<li><strong>革新</strong>: <code>utils/report_generator.py</code> をプロジェクト全体の「資産同期エンジン」へと昇華。</li>
+</ul>
+            <div class="footer">
+                &copy; 2026 NAMINORI Data Science Team. Generated from REVIEW_LOG.md.
+            </div>
+        </div>
+    </body>
+    </html>
+    

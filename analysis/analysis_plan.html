@@ -1,0 +1,109 @@
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>analysis plan</title>
+        
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #2c3e50; padding-left: 15px; }
+        h3 { color: #34495e; margin-top: 25px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .so-what {
+            background-color: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="analysis_plantxt">分析計画書 &amp; 分析ジャーナル (analysis_plan.txt)</h1>
+<h2 id="0">0. プロジェクト概要</h2>
+<ul>
+<li><strong>案件名:</strong> Jリーグ観客動員数予測分析</li>
+<li><strong>目的:</strong> 過去の試合データ（対戦カード、スタジアム、天候等）から、観客動員数(y)を予測し、その要因を分析する。</li>
+<li><strong>データ:</strong> <code>inputdata/train.csv</code>, <code>inputdata/condition.csv</code>, <code>inputdata/stadium.csv</code></li>
+</ul>
+<h2 id="1">1. チーム役割</h2>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<h2 id="2">2. 分析フェーズ</h2>
+<ol>
+<li><strong>[res_01_EDA_Initial_Insights] データ理解・探索的データ分析 (EDA)</strong></li>
+<li>成果: 目的変数yの分布、J1/J2格差、無観客試合の特定。</li>
+<li><strong>[res_02_Refined_Dataset] 特徴量エンジニアリング &amp; 前処理</strong></li>
+<li>成果: 天候カテゴリ化、人気チーム・ダービーフラグ付きマージ済みデータセット。</li>
+<li><strong>[res_03_Attendance_Prediction_Model] モデル構築・評価</strong></li>
+<li>成果: 予測モデルと要因分析レポート。</li>
+</ol>
+<h2 id="3">3. 分析ジャーナル（意思決定の記録）</h2>
+<h3 id="20260318-human-readable-labels">2026/03/18: 人間可読なラベル（Human-Readable Labels）の適用</h3>
+<ul>
+<li><strong>意思決定</strong>: 曜日別グラフにおいて、内部数値（0-6）を日本語の曜日名（月-日）へデコードして表示するように改善した。</li>
+<li><strong>理由</strong>: 数値ラベルは現場の意思決定者に解読コストを強いる不親切な表現であり、憲章の「説明可能性」に反するため。</li>
+<li><strong>調整</strong>: <code>report_rules.md</code> に「人間可読なラベルの原則」を追記。機械的なIDやコードをそのままグラフに出さないことを義務化した。</li>
+</ul>
+<h3 id="20260318-dimensional-consistency">2026/03/18: 次元維持（Dimensional Consistency）の徹底</h3>
+<ul>
+<li><strong>意思決定</strong>: 曜日別分析などの多角的な分析においても、常にJ1/J2のディビジョン情報を維持（層別化）するように画像を再構成した。</li>
+<li><strong>理由</strong>: 単一の平均値ではJ1/J2の構造的格差に曜日効果が埋もれてしまい、物理的な実態を誤認させるリスクがあったため。</li>
+</ul>
+<h3 id="20260318-index">2026/03/18: 分析ポータル（INDEX）の創設</h3>
+<ul>
+<li><strong>意思決定</strong>: <code>analysis/INDEX.md</code> および <code>INDEX.html</code> を新設し、全レポートへの動線を一元化した。</li>
+</ul>
+<h3 id="20260318">2026/03/18: レポート作成ツールのユーティリティ化</h3>
+<ul>
+<li><strong>意思決定</strong>: <code>convert_to_html.py</code> を成果物フォルダからルート直下の <code>utils/report_generator.py</code> へ移管・昇華させた。</li>
+</ul>
+<h3 id="20260318_1">2026/03/18: 最終報告フェーズの完了</h3>
+<ul>
+<li><strong>意思決定</strong>: 最終報告書 <code>FINAL_REPORT_Attendance_Prediction.md</code> を作成し、全イシューをクローズした。</li>
+<li><strong>結果</strong>: RMSE 3549 のモデルと共に、全フェーズのHTMLレポートを生成。印刷（PDF化）にも対応したCSSを適用。</li>
+</ul>
+            <div class="footer">
+                &copy; 2026 NAMINORI Data Science Team. Generated from analysis_plan.md.
+            </div>
+        </div>
+    </body>
+    </html>
+    

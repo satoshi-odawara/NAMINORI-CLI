@@ -1,0 +1,91 @@
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INDEX</title>
+        
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #2c3e50; padding-left: 15px; }
+        h3 { color: #34495e; margin-top: 25px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .so-what {
+            background-color: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="j">Jリーグ観客動員数予測分析：分析ポータル</h1>
+<p>本ディレクトリには、Jリーグ観客動員数予測に関する全ての分析成果物と運用記録が格納されています。
+初めての方は、まず「<strong>0. 最終報告書</strong>」からご覧ください。</p>
+<hr />
+<h2 id="_1">📊 分析レポート一覧</h2>
+<p>各レポートは、Markdown（開発用）と HTML（閲覧・印刷用）の2形式で提供されています。</p>
+<h3 id="0-final-report">0. 最終報告書 (Final Report)</h3>
+<p>分析の総括と、現場で取るべきアクションプランをまとめています。
+- <a href="res_04_Final_Report/FINAL_REPORT_Attendance_Prediction.html"><strong>HTML版で読む（推奨）</strong></a>
+- <a href="res_04_Final_Report/FINAL_REPORT_Attendance_Prediction.md">Markdown版</a></p>
+<h3 id="1-eda">1. 探索的データ分析 (EDA)</h3>
+<p>データの分布、J1/J2の構造的な動員格差、無観客試合の特定など、初期の洞察をまとめています。
+- <a href="res_01_EDA_Initial_Insights/REPORT_EDA.html">HTML版</a>
+- <a href="res_01_EDA_Initial_Insights/REPORT_EDA.md">Markdown版</a></p>
+<h3 id="2">2. 特徴量エンジニアリング &amp; 前処理</h3>
+<p>天候の集約、人気チーム・ダービーフラグなど、ドメイン知識を変数化した過程をまとめています。
+- <a href="res_02_Refined_Dataset/REPORT_Feature_Engineering.html">HTML版</a>
+- <a href="res_02_Refined_Dataset/REPORT_Feature_Engineering.md">Markdown版</a></p>
+<h3 id="3">3. モデル構築 &amp; 要因分析</h3>
+<p>Random Forestを用いた予測モデル（RMSE: 3549）と、動員を決定付ける主要因の定量化結果です。
+- <a href="res_03_Attendance_Prediction_Model/REPORT_Modeling.html">HTML版</a>
+- <a href="res_03_Attendance_Prediction_Model/REPORT_Modeling.md">Markdown版</a></p>
+<hr />
+<h2 id="_2">🛠️ 管理・運用ドキュメント（プロセスの透明性）</h2>
+<p>分析の背景、物理的制約、意思決定の履歴を公開しています。</p>
+<ul>
+<li><a href="analysis_plan.html"><strong>分析計画書 &amp; ジャーナル (HTML版)</strong></a> / <a href="analysis_plan.md">Markdown版</a></li>
+<li><a href="PROJECT_SPECIFIC_RULES.html"><strong>案件固有ルール (HTML版)</strong></a> / <a href="PROJECT_SPECIFIC_RULES.md">Markdown版</a></li>
+<li><a href="REVIEW_LOG.html"><strong>品質改善ログ (HTML版)</strong></a> / <a href="REVIEW_LOG.md">Markdown版</a></li>
+</ul>
+<hr />
+<p>&copy; 2026 NAMINORI Data Science Team.</p>
+            <div class="footer">
+                &copy; 2026 NAMINORI Data Science Team. Generated from INDEX.md.
+            </div>
+        </div>
+    </body>
+    </html>
+    
