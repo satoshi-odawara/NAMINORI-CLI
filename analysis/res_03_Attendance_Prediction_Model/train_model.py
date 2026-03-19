@@ -22,6 +22,7 @@ def train_and_evaluate():
 
     # 4. 予測と評価
     y_pred = model.predict(X_test)
+    y_pred = np.clip(y_pred, 0, X_test['capa'])
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
     # 5. 特徴量重要度の算出

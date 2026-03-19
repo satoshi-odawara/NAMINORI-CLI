@@ -72,8 +72,8 @@
 <h2 id="3">3. 第三層：エンジニア向け算出根拠</h2>
 <h3 id="3-1">3-1. モデル性能と物理境界</h3>
 <ul>
-<li><strong>物理妥当性</strong>: 全ての予測において <code>y &gt; capa</code> の発生を抑制するロジック（または capa を特徴量の筆頭に置くこと）で物理的矛盾を回避。</li>
-<li><strong>算出ロジック</strong>: RandomForest (n=100) による特徴量重要度算出。</li>
+<li><strong>物理妥当性</strong>: モデルの予測出力（<code>y_pred</code>）に対して、明示的に下限（0）および上限（対象スタジアムの <code>capa</code>）でクリッピングする処理を実装した。検証の結果、RandomForest は学習データからこの境界をすでにほぼ正確に学習しており、クリッピング前後の RMSE (3373.23) に変化は見られなかった。しかし、外れ値への安全装置として物理境界の強制は必須である。</li>
+<li><strong>算出ロジック</strong>: RandomForest (n=100) による特徴量重要度算出。予測出力は <code>y_pred = np.clip(y_pred, 0, capa)</code> により補正。</li>
 </ul>
 <hr />
 <p>&copy; 2026 NAMINORI Data Science Team.</p>

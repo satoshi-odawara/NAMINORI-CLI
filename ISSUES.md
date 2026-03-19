@@ -12,3 +12,4 @@
 - [x] [ISSUE-03] モデル構築・評価 ([REPORT](analysis/res_03_Attendance_Prediction_Model/REPORT_MODEL.html))
 - [x] [ISSUE-04] 統合レポート作成 ([FINAL REPORT](analysis/res_04_Final_Report/FINAL_REPORT_Attendance_Prediction.html))
 - [x] [ISSUE-05] 規約改訂：イシュー管理の導入とポータル整備
+- [x] [ISSUE-06] 物理的妥当性の徹底：予測モデルにおける上限クリッピング (y_pred <= capa) の実装および再評価
