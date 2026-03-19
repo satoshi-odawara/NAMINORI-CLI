@@ -1,0 +1,81 @@
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>REPORT MODEL</title>
+        
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #2c3e50; padding-left: 15px; }
+        h3 { color: #34495e; margin-top: 25px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .so-what {
+            background-color: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="phase-3">PHASE 3: モデル構築・評価 レポート</h1>
+<h2 id="1">1. エグゼクティブサマリー</h2>
+<ul>
+<li><strong>背景</strong>: 精製した特徴量を用い、観客動員数の予測モデルを構築した。</li>
+<li><strong>目的</strong>: 予測精度の検証および、動員数に寄与する主要因の特定。</li>
+<li><strong>結果</strong>: RMSE 3373.23 を達成。スタジアム規模 (capa) と所属リーグ (stage) が予測の 8 割近くを支配していることが判明した。</li>
+<li><strong>アクション</strong>: 次フェーズにて、これまでの分析結果を統合し、現場向けの集客改善アクションを提示する。</li>
+</ul>
+<h2 id="2">2. 現場担当者向け分析（ビジュアル＆アクション）</h2>
+<h3 id="2-1-2">2-1. 動員数を決める「黄金の2大因子」</h3>
+<ul>
+<li><strong>要因</strong>: スタジアムキャパシティ (capa) と所属カテゴリ (stage) が最も重要。</li>
+<li><strong>So What?</strong>: 天候や曜日の工夫以上に、所属リーグの維持とスタジアムキャパシティの最適利用が集客最大化の鍵となる。</li>
+</ul>
+<p><img alt="Feature Importance" src="figures/feature_importance.png" /></p>
+<h2 id="3">3. エンジニア向け算出根拠</h2>
+<ul>
+<li><strong>評価指標</strong>: RMSE (Root Mean Squared Error)。平均的な予測誤差は約 3,373 人。</li>
+<li><strong>モデル</strong>: RandomForestRegressor (n=100)。非線形な capcity との相関を適切にモデル化。</li>
+</ul>
+<hr />
+<p>&copy; 2026 NAMINORI Data Science Team.</p>
+            <div class="footer">
+                &copy; 2026 NAMINORI Data Science Team. Generated from REPORT_MODEL.md.
+            </div>
+        </div>
+    </body>
+    </html>
+    

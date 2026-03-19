@@ -1,56 +1,60 @@
 import pandas as pd
+import numpy as np
 import os
-try:
-    from analysis.res_02_Refined_Dataset.constants import POPULAR_TEAMS, DERBY_PAIRS, categorize_weather
-except ImportError:
-    from constants import POPULAR_TEAMS, DERBY_PAIRS, categorize_weather
+import sys
 
-def preprocess_and_merge():
-    # Load data
+# constants.py を読み込むためパスを追加
+sys.path.append('analysis')
+from constants import POPULAR_TEAMS, WEATHER_MAP, WEEK_MAP
+
+def preprocess():
+    # 1. データの読み込み
     train = pd.read_csv('inputdata/train.csv')
     condition = pd.read_csv('inputdata/condition.csv')
     stadium = pd.read_csv('inputdata/stadium.csv')
-    
-    # Merge train and condition on 'id'
+
+    # 2. データの結合
     df = pd.merge(train, condition, on='id', how='left')
-    
-    # Merge with stadium info on stadium name
     df = pd.merge(df, stadium, left_on='stadium', right_on='name', how='left')
+
+    # 3. 特徴量エンジニアリング
     
-    # Basic date processing
-    df['date'] = df['year'].astype(str) + '-' + df['gameday'].str.split('(').str[0]
-    df['date'] = pd.to_datetime(df['date'], format='%Y-%m/%d')
-    df['month'] = df['date'].dt.month
-    df['day_of_week'] = df['date'].dt.dayofweek # 0=Monday, 6=Sunday
+    # 月と曜日の抽出 (gameday: MM/DD(曜日))
+    df['month'] = df['gameday'].apply(lambda x: int(x[:2]))
+    df['week'] = df['gameday'].apply(lambda x: x[6:7])
+    df['week_num'] = df['week'].map(WEEK_MAP)
     
-    # Temperature and humidity
-    df['humidity'] = df['humidity'].str.replace('%', '').astype(float)
-    
-    # --- Feature Engineering ---
-    
-    # 1. Weather Categorization
-    df['weather_cat'] = df['weather'].apply(categorize_weather)
-    
-    # 2. Popular Team Flag
-    df['is_popular'] = df.apply(lambda row: 1 if row['home'] in POPULAR_TEAMS or row['away'] in POPULAR_TEAMS else 0, axis=1)
-    
-    # 3. Derby Match Flag
-    def check_derby(home, away):
-        match_teams = set([home, away])
-        for derby in DERBY_PAIRS:
-            if derby.issubset(match_teams):
-                return 1
-        return 0
-    
-    df['is_derby'] = df.apply(lambda row: check_derby(row['home'], row['away']), axis=1)
-    
-    # 4. Handle Missing Values
-    df['referee'] = df['referee'].fillna('Unknown')
-    
-    # Save merged data
-    output_path = 'analysis/res_02_Refined_Dataset/merged_train.csv'
-    df.to_csv(output_path, index=False)
-    print(f"Preprocessed data with features saved to {output_path}")
+    # 土日祝フラグ (簡易的に土日を 1 とする)
+    df['is_holiday'] = df['week'].apply(lambda x: 1 if x in ['土', '日', '祝'] else 0)
+
+    # 天候の簡略化
+    # 複数の天候が記載されている場合は、先頭の天候を優先する
+    def simplify_weather(w):
+        for k, v in WEATHER_MAP.items():
+            if k in w:
+                return v
+        return 'Other'
+    df['weather_cat'] = df['weather'].apply(simplify_weather)
+
+    # 人気チームフラグ
+    df['is_popular_home'] = df['home'].apply(lambda x: 1 if x in POPULAR_TEAMS else 0)
+    df['is_popular_away'] = df['away'].apply(lambda x: 1 if x in POPULAR_TEAMS else 0)
+
+    # 4. モデル用データの作成
+    # 今回はベースラインとして数値化・カテゴリ化された特徴量を選択
+    features = [
+        'id', 'y', 'year', 'stage', 'month', 'week_num', 'is_holiday',
+        'weather_cat', 'is_popular_home', 'is_popular_away', 'capa'
+    ]
+    df_refined = df[features].copy()
+
+    # カテゴリ変数のダミー化
+    df_refined = pd.get_dummies(df_refined, columns=['stage', 'weather_cat'])
+
+    # 5. 保存
+    output_path = 'analysis/res_02_Refined_Dataset/train_preprocessed.csv'
+    df_refined.to_csv(output_path, index=False, encoding='utf-8')
+    print(f"Preprocessed data saved to {output_path}")
 
 if __name__ == "__main__":
-    preprocess_and_merge()
+    preprocess()

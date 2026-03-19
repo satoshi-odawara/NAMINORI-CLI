@@ -1,42 +1,30 @@
-# Jリーグ観客動員数予測分析：分析ポータル
+# NAMINORI 分析ポータル：Jリーグ観客動員数予測
 
-本ディレクトリには、Jリーグ観客動員数予測に関する全ての分析成果物と運用記録が格納されています。
-初めての方は、まず「**0. 最終報告書**」からご覧ください。
+本プロジェクトの分析成果物および管理資産への統合エントリーポイントです。
 
----
+## 1. 分析レポート（ストーリー）
 
-## 📊 分析レポート一覧
+分析の各フェーズと最終的な提言を順に確認いただけます。
 
-各レポートは、Markdown（開発用）と HTML（閲覧・印刷用）の2形式で提供されています。
+- **[FINAL REPORT: 統合報告書](res_04_Final_Report/FINAL_REPORT_Attendance_Prediction.md)**
+  - 全フェーズを統合した経営・現場向けの最終提言。**まずはこちらをご覧ください。**
+- **[PHASE 1: データ理解・EDA](res_01_EDA_Initial_Insights/REPORT_EDA.md)**
+  - データの品質確認と、物理的整合性（キャパシティ等）の検証。
+- **[PHASE 2: 特徴量エンジニアリング](res_02_Refined_Dataset/REPORT_PREPROCESSING.md)**
+  - 動員数に影響を与える「人気」「天候」「日程」の数値化プロセス。
+- **[PHASE 3: モデル構築・評価](res_03_Attendance_Prediction_Model/REPORT_MODEL.md)**
+  - RandomForest を用いた予測精度の検証と、重要因子の特定。
 
-### 0. 最終報告書 (Final Report)
-分析の総括と、現場で取るべきアクションプランをまとめています。
-- [**HTML版で読む（推奨）**](res_04_Final_Report/FINAL_REPORT_Attendance_Prediction.html)
-- [Markdown版](res_04_Final_Report/FINAL_REPORT_Attendance_Prediction.md)
+## 2. 管理資産・規約
 
-### 1. 探索的データ分析 (EDA)
-データの分布、J1/J2の構造的な動員格差、無観客試合の特定など、初期の洞察をまとめています。
-- [HTML版](res_01_EDA_Initial_Insights/REPORT_EDA.html)
-- [Markdown版](res_01_EDA_Initial_Insights/REPORT_EDA.md)
+分析の再現性と隔離原則を担保するためのドキュメント群です。
 
-### 2. 特徴量エンジニアリング & 前処理
-天候の集約、人気チーム・ダービーフラグなど、ドメイン知識を変数化した過程をまとめています。
-- [HTML版](res_02_Refined_Dataset/REPORT_Feature_Engineering.html)
-- [Markdown版](res_02_Refined_Dataset/REPORT_Feature_Engineering.md)
-
-### 3. モデル構築 & 要因分析
-Random Forestを用いた予測モデル（RMSE: 3549）と、動員を決定付ける主要因の定量化結果です。
-- [HTML版](res_03_Attendance_Prediction_Model/REPORT_Modeling.html)
-- [Markdown版](res_03_Attendance_Prediction_Model/REPORT_Modeling.md)
-
----
-
-## 🛠️ 管理・運用ドキュメント（プロセスの透明性）
-分析の背景、物理的制約、意思決定の履歴を公開しています。
-
-- [**分析計画書 & ジャーナル (HTML版)**](analysis_plan.html) / [Markdown版](analysis_plan.md)
-- [**案件固有ルール (HTML版)**](PROJECT_SPECIFIC_RULES.html) / [Markdown版](PROJECT_SPECIFIC_RULES.md)
-- [**品質改善ログ (HTML版)**](REVIEW_LOG.html) / [Markdown版](REVIEW_LOG.md)
+- **[PROJECT SPECIFIC RULES: 案件固有ルール](PROJECT_SPECIFIC_RULES.md)**
+  - Jリーグ特有のドメイン知識と物理的制約の定義。
+- **[ANALYSIS PLAN: 分析計画書](analysis_plan.md)**
+  - プロジェクトの進捗ロードマップと意思決定履歴。
+- **[REVIEW LOG: 振り返りログ](REVIEW_LOG.md)**
+  - 規約遵守の確認と、次期分析への教訓。
 
 ---
 &copy; 2026 NAMINORI Data Science Team.

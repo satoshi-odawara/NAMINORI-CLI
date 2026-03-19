@@ -1,0 +1,70 @@
+=== DATA SHAPE ===
+Train: (1721, 11)
+Condition: (2034, 31)
+Stadium: (59, 3)
+Merged: (1721, 44)
+
+=== NULL VALUES ===
+id             0
+y              0
+year           0
+stage          0
+match          0
+gameday        0
+time           0
+home           0
+away           0
+stadium        0
+tv             0
+home_score     0
+away_score     0
+weather        0
+temperature    0
+humidity       0
+referee        0
+home_team      0
+home_01        0
+home_02        0
+home_03        0
+home_04        0
+home_05        0
+home_06        0
+home_07        0
+home_08        0
+home_09        0
+home_10        0
+home_11        0
+away_team      0
+away_01        0
+away_02        0
+away_03        0
+away_04        0
+away_05        0
+away_06        0
+away_07        0
+away_08        0
+away_09        0
+away_10        0
+away_11        0
+name           0
+address        0
+capa           0
+
+=== Y (Attendance) SUMMARY ===
+count     1721.000000
+mean     10662.395119
+std       8106.877159
+min          0.000000
+25%       4750.000000
+50%       8650.000000
+75%      13431.000000
+max      54905.000000
+
+=== PHYSICAL BOUNDARY CHECK (y > capa) ===
+Counts of y > capa: 0
+
+
+=== STAGE DISTRIBUTION ===
+stage
+Ｊ２    1046
+Ｊ１     675
