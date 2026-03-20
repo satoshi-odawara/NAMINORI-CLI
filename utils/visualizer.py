@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# 日本語フォント設定
-plt.rcParams['font.family'] = 'MS Gothic'
+# フォント設定 (日本語フォントがない環境を考慮)
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['axes.unicode_minus'] = False
 
 def save_plot(fig, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
