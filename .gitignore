@@ -1,3 +1,4 @@
 analysis/
+inputdata/
 .venv/
 .pytest_cache/
