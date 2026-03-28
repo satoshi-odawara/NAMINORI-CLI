@@ -8,6 +8,7 @@
 - 例: fft_spectrum/, iso_20816/, mfcc_features/ など
 - スキルはパイプラインで組み合わせ可能な設計とする
 - 共通の入出力スキーマ（§6.2）に準拠することで組み合わせを保証する
+- **独立性の維持**: 各スキルは自己完結型とし、共有ライブラリ等への依存を最小限に抑える（疎結合）。
 
 ## 根拠の可視化
 
@@ -127,4 +128,16 @@ ISSUE.mdを経由しない開発作業は認めません。
 パイプライン連携のため、metadata 内のキー名は以下を優先使用すること。
 - `bearing_params`: { "fr": 回転周波数, "n": 転動体数, "d_D_ratio": 径比 }
 - `filter_params`: { "low": 低域遮断, "high": 高域遮断, "order": 次数 }
+- `unit`: "mms" (速度) | "um" (変位) | "ms2" (加速度) | "g" (G)
 - `window`: "hann" | "hamming" | "flattop"
+
+## 6.7 単位管理の厳格化
+
+- 入力 `metadata.unit` が指定されている場合、スクリプトは必ずその単位に従って計算すること。
+- 物理定数（重力加速度等）を用いる場合は $9.80665 m/s^2$ を標準とする。
+- 変換（積分等）を行うスキルは、出力 JSON に `features.source_unit` と `features.target_unit` を含めること。
+
+## 6.8 スキル・パイプライン (Skill Chaining)
+
+- スキル A の出力をスキル B の入力とする際、A の `features` オブジェクトの内容は B の `metadata` へ自動的にマッピングされることを想定した設計とする。
+- 例: `time_domain_features` が出力した `rms` 値は、そのまま `iso_20816_severity` の入力 `metadata.rms_value` として利用される。
