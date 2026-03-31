@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "iso_20816": { "status": "normal", "rms_value": 1.8, "zone": "B" },
+    "fft_spectrum": { "dominant_frequency": 30.0, "peak_frequencies": [30.0] },
+    "autoencoder": { "anomaly_score": 0.95, "status": "alert" },
+    "lstm_trend": { "remaining_useful_life_days": 45 }
+  },
+  "metadata": {
+    "equipment_id": "FAN_002",
+    "bearing_params": { "fr": 30.0, "n": 10, "d_D_ratio": 0.35 }
+  }
+}

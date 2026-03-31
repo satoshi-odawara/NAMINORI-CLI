@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "iso_20816": { "status": "alert", "rms_value": 7.5, "zone": "D" },
+    "fft_spectrum": { "dominant_frequency": 29.8, "peak_frequencies": [29.8, 59.6, 89.4] },
+    "autoencoder": { "anomaly_score": 1.2, "status": "alert" },
+    "lstm_trend": { "remaining_useful_life_days": 3 }
+  },
+  "metadata": {
+    "equipment_id": "PUMP_001",
+    "bearing_params": { "fr": 30.0, "n": 8, "d_D_ratio": 0.4 }
+  }
+}
